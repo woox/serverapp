@@ -1,0 +1,2 @@
+serviceClass: wooxes.net.client.DataService
+path: FFBD55C48A54D7DD0BBB9A3EE4FFC073.gwt.rpc

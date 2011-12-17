@@ -1,0 +1,2 @@
+serviceClass: wooxes.net.client.GreetingService
+path: 67831A47572E517B1FD2BFA2D347FBEF.gwt.rpc

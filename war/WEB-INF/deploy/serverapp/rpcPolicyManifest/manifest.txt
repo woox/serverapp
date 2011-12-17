@@ -1,0 +1,4 @@
+# Module serverapp
+# RPC service class, partial path of RPC policy file
+wooxes.net.client.GreetingService, 67831A47572E517B1FD2BFA2D347FBEF.gwt.rpc
+wooxes.net.client.DataService, FFBD55C48A54D7DD0BBB9A3EE4FFC073.gwt.rpc

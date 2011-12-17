@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+              http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5"
+         xmlns="http://java.sun.com/xml/ns/javaee">
+
+  <!-- Servlets -->
+  <servlet>
+    <servlet-name>greetServlet</servlet-name>
+    <servlet-class>wooxes.net.server.GreetingServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>greetServlet</servlet-name>
+    <url-pattern>/serverapp/greet</url-pattern>
+  </servlet-mapping>
+  <!--  Servlets RPC -->
+  <servlet>
+    <servlet-name>dataServlet</servlet-name>
+    <servlet-class>wooxes.net.server.DataServiceImpl</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>dataServlet</servlet-name>
+    <url-pattern>/serverapp/data</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>provaServlet</servlet-name>
+    <servlet-class>wooxes.net.server.ProvaServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>provaServlet</servlet-name>
+    <url-pattern>/serverapp/prova</url-pattern>
+  </servlet-mapping>
+
+  <!-- Servlets Client -->
+  <servlet>
+    <servlet-name>clientServlet</servlet-name>
+    <servlet-class>wooxes.net.server.ClientServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>clientServlet</servlet-name>
+    <url-pattern>/client</url-pattern>
+  </servlet-mapping>
+
+  <!-- Default page to serve -->
+  <welcome-file-list>
+    <welcome-file>Serverapp.html</welcome-file>
+  </welcome-file-list>
+
+</web-app>
