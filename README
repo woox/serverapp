@@ -1,1 +1,11 @@
-Repositorio serverapp 123
+Serverapp: Aplicació per a monitoritzar l'estat d'un conjunt d'ordinadors
+
+Projecte realitzat amb:
+	Eclipse Indigo
+	Google Web Toolkit 2.4
+
+Requeriments del servidor:
+	Java 1.7
+	Tomcat 6
+
+Autor: woox
