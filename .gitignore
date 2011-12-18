@@ -3,3 +3,5 @@
 /.settings
 /.gwt
 /war/serverapp
+/war/WEB-INF/deploy
+/war/WEB-INF/classes
