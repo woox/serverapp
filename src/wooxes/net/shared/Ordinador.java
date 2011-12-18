@@ -90,8 +90,18 @@ public class Ordinador implements IsSerializable{
 	
 	
 	public Widget getWidgetEstat(){
-		Image image = new Image("ok.gif");
-		return image;
+		Date actual = new Date();
+		long diferencia = actual.getTime() - timestamp.getTime();
+		
+		// Diferencia en minuts
+		diferencia = diferencia / ( 1000 * 60 );
+		
+		if( diferencia >= 6 ){
+			return new Image("error.jpg");
+		}
+		else{
+			return new Image("ok.gif");
+		}
 	}
 	
 	public Panel getPanel(){
