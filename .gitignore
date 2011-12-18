@@ -1,2 +1,5 @@
 
 /gwt-unitCache
+/.settings
+/.gwt
+/war/serverapp
