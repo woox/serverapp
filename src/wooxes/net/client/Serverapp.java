@@ -12,8 +12,10 @@ import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.DecoratorPanel;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PasswordTextBox;
@@ -41,10 +43,13 @@ public class Serverapp implements EntryPoint {
 	private final GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
 	private final DataServiceAsync dataService = GWT.create(DataService.class);
 
-	// Métode principal
+	// Imatges
+	private final String imageRefresh = "refresh.jpg";
+	
+	// MÃ©tode principal
 	public void onModuleLoad() {
 		// Login Inicial
-		final Label nameTxt	  	= new Label("Please enter your name:");
+		final Label nameTxt	  	= new Label("Introdueix el teu nom:");
 		final TextBox nameField = new TextBox();
 		nameField.setText("woox");
 		final PasswordTextBox namePass = new PasswordTextBox();
@@ -181,7 +186,19 @@ public class Serverapp implements EntryPoint {
 				sendLogin( nameField, namePass);
 			}
 		});
-		
+		nameField.addKeyUpHandler(new KeyUpHandler(){
+			@Override
+			public void onKeyUp(KeyUpEvent event) {
+				sendLogin( nameField, namePass);
+			}
+		});
+		namePass.addKeyUpHandler(new KeyUpHandler(){
+			@Override
+			public void onKeyUp(KeyUpEvent event) {
+				sendLogin( nameField, namePass);
+			}
+		});
+
 		hideCarregant();
 	}
 	
@@ -204,7 +221,7 @@ public class Serverapp implements EntryPoint {
 						}
 						else{
 							final DialogBox popup = new DialogBox(true);
-							final Label text = new Label("Usuario o contraseña incorrectos");
+							final Label text = new Label("Usuario o contraseÃ±a incorrectos");
 							popup.setText("Error");
 							popup.setWidget(text);
 							popup.setAnimationEnabled(true); // autohide = true
@@ -233,7 +250,7 @@ public class Serverapp implements EntryPoint {
 	}
 
 	private void cargaInicial(){
-		// Es carrega el menú i la pàgina inicial
+		// Es carrega el menÃº i la pÃ gina inicial
 		cargaMenu();
 		cargaGeneral();
 	}
@@ -294,7 +311,7 @@ public class Serverapp implements EntryPoint {
 		content.clear();
 
 		// S'afegeix un botó per recarregar la pàgina
-		Image refresh = new Image("refresh.jpg");
+		Image refresh = new Image(imageRefresh);
 		refresh.setTitle("Refrescar");
 		PushButton button = new PushButton(refresh, new ClickHandler(){
 
@@ -323,10 +340,53 @@ public class Serverapp implements EntryPoint {
 	private void cargaConfiguracio(){
 		RootPanel content = RootPanel.get("content");
 		content.clear();
+
+		// S'afegeix un botó per recarregar la pàgina
+		Image refresh = new Image(imageRefresh);
+		refresh.setTitle("Refrescar");
+		PushButton button = new PushButton(refresh, new ClickHandler(){
+
+			@Override
+			public void onClick(ClickEvent event) {
+				getOrdinador();
+				
+			}
+			
+		});
+
+		content.add(button);
+
+		content.add(usuari.getConfiguracioPanel());
+		/*
+		HorizontalPanel hp;
+		VerticalPanel vp;
 		
-		content.add(new Label("Aqui hi haura la configuració1"));
-		content.add(new Label("Aqui hi haura la configuració2"));
-		content.add(new Label("Aqui hi haura la configuració3"));
+		// Dades usuari
+		Label usuariLabel = new Label("Dades usuari");
+		
+		// Nom usuari
+		Label nameLabel = new Label("Nom");
+		TextBox nameField = new TextBox();
+		nameField.setText(usuari.getNom());
+		
+		hp = new HorizontalPanel();
+		hp.add(nameLabel);
+		hp.add(nameField);
+		
+		vp = new VerticalPanel();
+		vp.add(usuariLabel);
+		vp.add(hp);
+		
+		
+		DecoratorPanel panelUsuari= new DecoratorPanel();
+		panelUsuari.add(vp);
+
+		content.add(panelUsuari);
+
+		content.add(new Label("Aqui hi haura la configuració"));
+		content.add(new Label("Aqui hi haura la configuració"));
+		content.add(new Label("Aqui hi haura la configuració"));
+		*/
 	}
 
 	private void showError(String caption, String text){
@@ -338,16 +398,16 @@ public class Serverapp implements EntryPoint {
 		popup.center();
 		popup.show();
 	}
-	
+
 	private void showErrorConnexio(){
 		showError("Error", "Error al connectar amb el servidor");
 	}
-	
+
 	private void showCarregant(){
 		RootPanel loading = RootPanel.get("loading");
 		loading.setVisible(true);
 	}
-	
+
 	private void hideCarregant(){
 		RootPanel loading = RootPanel.get("loading");
 		loading.setVisible(false);

@@ -64,6 +64,22 @@ h1 {
 	margin-left: 60px;
 }
 
+.div_configuracio{
+	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 5px;
+	border: dashed black 1px;
+}
+
+.link_fondo{
+	color: black;
+}
+
+.link_fondo:hover{
+	color: white;
+}
+
 /* Estil */
 body{
 	background-color: #336699 ! important;

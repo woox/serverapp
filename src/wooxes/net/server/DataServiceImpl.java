@@ -35,6 +35,7 @@ public class DataServiceImpl extends RemoteServiceServlet implements DataService
 				usuari.setNick(rs.getString("nick"));
 				usuari.setNom(rs.getString("nom"));
 				usuari.setFecha(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(rs.getTimestamp("timestamp")));
+				usuari.setImatge(rs.getString("imatge"));
 			}
 
 			rs.close();
